@@ -1,37 +1,43 @@
-<div id="game-container">
-<div class="flex flex-col min-h-full bg-gray-50">
-    <!-- Header -->
-    <header class="flex items-center justify-between p-3 bg-white border-b border-gray-200">
+{% set marked_count = session.board | selectattr("is_marked") | list | length %}
+{% set total_squares = session.board | length %}
+
+<div id="game-container" class="game-shell" role="main" aria-live="polite">
+    <header class="game-header">
         <button
             hx-post="/reset"
             hx-target="#game-container"
             hx-swap="outerHTML"
-            class="text-gray-500 text-sm px-3 py-1.5 rounded active:bg-gray-100">
+            class="btn btn-ghost"
+            aria-label="Return to start screen">
             ← Back
         </button>
-        <h1 class="font-bold text-gray-900">Soc Ops</h1>
-        <div class="w-16"></div>
+
+        <div class="game-brand">
+            <p class="game-brand-kicker">Live Board</p>
+            <h1>Soc Ops</h1>
+        </div>
+
+        <div class="game-progress" aria-label="Board progress">
+            <span>{{ marked_count }} / {{ total_squares }}</span>
+            <small>Marked</small>
+        </div>
     </header>
 
-    <!-- Instructions -->
-    <p class="text-center text-gray-500 text-sm py-2 px-4">
-        Tap a square when you find someone who matches it.
-    </p>
+    <section class="game-subheader" aria-label="Gameplay instructions">
+        <p>Tap a square when you confirm a match. First complete line wins.</p>
+    </section>
 
-    <!-- Bingo indicator -->
     {% if session.has_bingo %}
-    <div class="bg-amber-100 text-amber-800 text-center py-2 font-semibold text-sm">
-        🎉 BINGO! You got a line!
-    </div>
+    <section class="status-banner" role="status" aria-live="assertive">
+        Bingo line completed. Keep going or reset for a new round.
+    </section>
     {% endif %}
 
-    <!-- Board -->
-    <div class="flex-1 flex items-center justify-center p-3">
+    <section class="board-stage" aria-label="Bingo board">
         {% include "components/bingo_board.html" %}
-    </div>
+    </section>
 </div>
 
 {% if session.show_bingo_modal %}
     {% include "components/bingo_modal.html" %}
 {% endif %}
-</div>

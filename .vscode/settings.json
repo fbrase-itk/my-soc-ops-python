@@ -8,7 +8,8 @@
     "uv run uvicorn": true,
     "uv run pytest": true,
     "uv run ruff": true,
-    "uv sync": true
+    "uv sync": true,
+    "uv": true
   },
   "github.copilot.chat.githubMcpServer.enabled": true,
   "github.copilot.chat.githubMcpServer.toolsets": [
