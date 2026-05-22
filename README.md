@@ -76,6 +76,15 @@ Players get a personalised 5 × 5 bingo card filled with prompts like *"Has live
 - Python 3.13+
 - [`uv`](https://docs.astral.sh/uv/) (recommended) **or** plain `pip`
 
+### Fastest Start
+
+```bash
+uv sync
+uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Then open **http://localhost:8000**.
+
 ### Run Locally
 
 ```bash
@@ -87,7 +96,16 @@ cd my-soc-ops-python
 uv sync
 
 # Start the dev server
-uv run soc-ops
+uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### Run with pip (alternative)
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Open **http://localhost:8000** — your bingo card is ready. 🎲
