@@ -21,6 +21,11 @@
     --radius-sm: 10px;
     --radius-md: 16px;
     --radius-lg: 24px;
+    --landing-delay-1: 40ms;
+    --landing-delay-2: 100ms;
+    --landing-delay-3: 160ms;
+    --landing-delay-4: 220ms;
+    --landing-feature-min-width: 10.5rem;
 }
 
 * {
@@ -97,26 +102,19 @@ body {
     animation: enter-up 280ms ease-out both;
 }
 
-.landing-section:nth-child(1) {
-    animation-delay: 40ms;
-}
-
-.landing-section:nth-child(2) {
-    animation-delay: 100ms;
-}
-
-.landing-section:nth-child(3) {
-    animation-delay: 160ms;
-}
-
-.landing-section:nth-child(4) {
-    animation-delay: 220ms;
-}
-
 .landing-hero {
+    animation-delay: var(--landing-delay-1);
     border-color: var(--accent-soft);
     background:
         linear-gradient(180deg, var(--bg-1) 0%, var(--accent-soft) 100%);
+}
+
+.landing-how {
+    animation-delay: var(--landing-delay-2);
+}
+
+.landing-highlights {
+    animation-delay: var(--landing-delay-3);
 }
 
 .start-kicker,
@@ -183,7 +181,7 @@ body {
     margin-top: 0.9rem;
     display: grid;
     gap: 0.65rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--landing-feature-min-width), 1fr));
 }
 
 .landing-feature {
@@ -206,6 +204,7 @@ body {
 }
 
 .landing-footer {
+    animation-delay: var(--landing-delay-4);
     text-align: center;
     color: var(--text-2);
     font-size: 0.8rem;
