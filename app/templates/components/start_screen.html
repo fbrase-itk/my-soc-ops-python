@@ -4,7 +4,7 @@
             <div class="start-hero-main">
                 <p class="start-kicker">Networking Icebreaker</p>
                 <h1 id="start-title" class="start-title">Soc Ops</h1>
-                <p class="start-subtitle">Launch a fast social bingo round for professional events, workshops, and team mixers.</p>
+                <p class="start-subtitle">Start a fast social bingo round for professional events, workshops, and team mixers.</p>
                 <button
                     hx-post="/start"
                     hx-target="#game-container"
@@ -15,8 +15,8 @@
                 </button>
             </div>
 
-            <aside id="start-how-to-play" class="start-howto" aria-label="How to play">
-                <h2>How to play</h2>
+            <aside id="start-how-to-play" class="start-howto" aria-labelledby="start-how-to-play-title">
+                <h2 id="start-how-to-play-title">How to play</h2>
                 <ol class="start-steps">
                     <li><span class="step-index" aria-hidden="true">1</span><span>Meet participants and match prompts on the board.</span></li>
                     <li><span class="step-index" aria-hidden="true">2</span><span>Mark each confirmed square as conversations progress.</span></li>
@@ -26,6 +26,7 @@
         </div>
 
         <section id="start-highlights" class="start-feature-rail" aria-label="Feature highlights">
+            <h2 class="start-feature-heading">Feature highlights</h2>
             <article class="start-feature-card">
                 <h3>Fast onboarding</h3>
                 <p>Start in one click with no setup overhead.</p>

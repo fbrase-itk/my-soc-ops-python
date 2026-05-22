@@ -91,7 +91,7 @@ body {
 
 .start-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: 1rem;
     align-items: stretch;
 }
@@ -154,6 +154,12 @@ body {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.7rem;
+}
+
+.start-feature-heading {
+    grid-column: 1 / -1;
+    margin: 0 0 0.1rem;
+    font-size: 0.96rem;
 }
 
 .start-feature-card {
