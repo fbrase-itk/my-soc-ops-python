@@ -75,13 +75,156 @@ body {
 }
 
 .start-card {
-    width: min(100%, 36rem);
+    width: min(100%, 62rem);
     background: var(--bg-1);
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     padding: 2rem;
     animation: enter-up 280ms ease-out;
+}
+
+.start-landing {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.start-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.start-hero-main {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: linear-gradient(160deg, var(--bg-1) 0%, var(--bg-0) 100%);
+    padding: 1.3rem;
+    animation: enter-up 280ms ease-out both;
+}
+
+.start-howto {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--bg-0);
+    padding: 1.1rem;
+    animation: enter-up 320ms ease-out both;
+    animation-delay: 55ms;
+}
+
+.start-howto h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.start-steps {
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.65rem;
+}
+
+.start-steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem;
+    align-items: start;
+    color: var(--text-1);
+    font-size: 0.91rem;
+    line-height: 1.45;
+}
+
+.step-index {
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.06rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+
+.start-feature-rail {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.7rem;
+}
+
+.start-feature-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+    padding: 0.85rem 0.9rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 150ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    animation: enter-up 340ms ease-out both;
+}
+
+.start-feature-card:nth-child(1) {
+    animation-delay: 85ms;
+}
+
+.start-feature-card:nth-child(2) {
+    animation-delay: 120ms;
+}
+
+.start-feature-card:nth-child(3) {
+    animation-delay: 155ms;
+}
+
+.start-feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-soft);
+}
+
+.start-feature-card h3 {
+    margin: 0;
+    font-size: 0.93rem;
+}
+
+.start-feature-card p {
+    margin: 0.35rem 0 0;
+    color: var(--text-1);
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
+.start-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 0.15rem;
+    color: var(--text-2);
+    font-size: 0.82rem;
+}
+
+.start-footer-links {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.start-footer a {
+    color: var(--text-1);
+    text-decoration: none;
+}
+
+.start-footer a:hover {
+    color: var(--accent-strong);
+}
+
+.start-footer a:focus-visible {
+    outline: 2px solid var(--text-0);
+    outline-offset: 2px;
 }
 
 .start-kicker,
@@ -106,27 +249,6 @@ body {
     color: var(--text-1);
     font-size: 1rem;
     line-height: 1.5;
-}
-
-.start-rules {
-    margin-top: 1.5rem;
-    border: 1px solid var(--line);
-    background: var(--bg-0);
-    border-radius: var(--radius-md);
-    padding: 1rem 1.125rem;
-}
-
-.start-rules h2 {
-    margin: 0 0 0.75rem;
-    font-size: 1rem;
-}
-
-.start-rules ul {
-    margin: 0;
-    padding-left: 1rem;
-    color: var(--text-1);
-    display: grid;
-    gap: 0.5rem;
 }
 
 .btn {
@@ -394,6 +516,16 @@ body {
     }
 }
 
+@media (max-width: 860px) {
+    .start-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .start-feature-rail {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 520px) {
     .start-shell,
     .game-shell {
@@ -403,6 +535,15 @@ body {
     .start-card {
         padding: 1.25rem;
         border-radius: 18px;
+    }
+
+    .start-feature-rail {
+        grid-template-columns: 1fr;
+    }
+
+    .start-footer {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .game-header {

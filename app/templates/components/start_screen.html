@@ -1,25 +1,51 @@
 <div id="game-container" class="start-shell" role="main" aria-live="polite">
-    <section class="start-card" aria-labelledby="start-title">
-        <p class="start-kicker">Networking Icebreaker</p>
-        <h1 id="start-title" class="start-title">Soc Ops</h1>
-        <p class="start-subtitle">Professional social bingo for conferences, workshops, and team mixers.</p>
+    <section class="start-card start-landing" aria-labelledby="start-title">
+        <div class="start-hero">
+            <div class="start-hero-main">
+                <p class="start-kicker">Networking Icebreaker</p>
+                <h1 id="start-title" class="start-title">Soc Ops</h1>
+                <p class="start-subtitle">Launch a fast social bingo round for professional events, workshops, and team mixers.</p>
+                <button
+                    hx-post="/start"
+                    hx-target="#game-container"
+                    hx-swap="outerHTML"
+                    class="btn btn-primary btn-lg"
+                    aria-label="Start game session">
+                    Start Game
+                </button>
+            </div>
 
-        <div class="start-rules" aria-label="How to play">
-            <h2>How it works</h2>
-            <ul>
-                <li>Find people who match each square.</li>
-                <li>Mark squares as you confirm matches.</li>
-                <li>Complete any row, column, or diagonal to win.</li>
-            </ul>
+            <aside id="start-how-to-play" class="start-howto" aria-label="How to play">
+                <h2>How to play</h2>
+                <ol class="start-steps">
+                    <li><span class="step-index" aria-hidden="true">1</span><span>Meet participants and match prompts on the board.</span></li>
+                    <li><span class="step-index" aria-hidden="true">2</span><span>Mark each confirmed square as conversations progress.</span></li>
+                    <li><span class="step-index" aria-hidden="true">3</span><span>Complete a row, column, or diagonal to call bingo.</span></li>
+                </ol>
+            </aside>
         </div>
 
-        <button
-            hx-post="/start"
-            hx-target="#game-container"
-            hx-swap="outerHTML"
-            class="btn btn-primary btn-lg"
-            aria-label="Start game session">
-            Start Game
-        </button>
+        <section id="start-highlights" class="start-feature-rail" aria-label="Feature highlights">
+            <article class="start-feature-card">
+                <h3>Fast onboarding</h3>
+                <p>Start in one click with no setup overhead.</p>
+            </article>
+            <article class="start-feature-card">
+                <h3>Team friendly</h3>
+                <p>Encourages structured conversations across groups.</p>
+            </article>
+            <article class="start-feature-card">
+                <h3>Session focused</h3>
+                <p>Designed for short rounds with clear progress.</p>
+            </article>
+        </section>
+
+        <footer class="start-footer" aria-label="Session meta">
+            <span>5×5 board • quick rounds</span>
+            <div class="start-footer-links">
+                <a href="#start-how-to-play">How to play</a>
+                <a href="#start-highlights">Highlights</a>
+            </div>
+        </footer>
     </section>
 </div>
