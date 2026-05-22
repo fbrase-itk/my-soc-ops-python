@@ -1,5 +1,6 @@
 {% set marked_count = session.board | selectattr("is_marked") | list | length %}
 {% set total_squares = session.board | length %}
+{% set is_hunt = session.game_mode == "hunt" %}
 
 <div id="game-container" class="game-shell" role="main" aria-live="polite">
     <header class="game-header">
@@ -13,7 +14,7 @@
         </button>
 
         <div class="game-brand">
-            {% if session.game_mode == "hunt" %}
+            {% if is_hunt %}
             <p class="game-brand-kicker">Scavenger Hunt</p>
             {% else %}
             <p class="game-brand-kicker">Live Board</p>
@@ -23,19 +24,19 @@
 
         <div class="game-progress" aria-label="Board progress">
             <span>{{ marked_count }} / {{ total_squares }}</span>
-            <small>{% if session.game_mode == "hunt" %}Progress{% else %}Marked{% endif %}</small>
+            <small>{% if is_hunt %}Progress{% else %}Marked{% endif %}</small>
         </div>
     </header>
 
     <section class="game-subheader" aria-label="Gameplay instructions">
-        {% if session.game_mode == "hunt" %}
+        {% if is_hunt %}
         <p>Use the checklist and mark each confirmed match to complete the Scavenger Hunt.</p>
         {% else %}
         <p>Tap a square when you confirm a match. First complete line wins.</p>
         {% endif %}
     </section>
 
-    {% if session.game_mode == "hunt" and session.hunt_complete %}
+    {% if is_hunt and session.hunt_complete %}
     <section class="status-banner" role="status" aria-live="assertive">
         Scavenger Hunt complete.
     </section>
@@ -46,7 +47,7 @@
     {% endif %}
 
     <section class="board-stage" aria-label="Bingo board">
-        {% if session.game_mode == "hunt" %}
+        {% if is_hunt %}
         {% include "components/hunt_checklist.html" %}
         {% else %}
         {% include "components/bingo_board.html" %}
@@ -54,6 +55,6 @@
     </section>
 </div>
 
-{% if session.show_bingo_modal and session.game_mode != "hunt" %}
+{% if session.show_bingo_modal and not is_hunt %}
     {% include "components/bingo_modal.html" %}
 {% endif %}

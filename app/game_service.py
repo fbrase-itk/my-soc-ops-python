@@ -30,21 +30,23 @@ class GameSession:
     def has_bingo(self) -> bool:
         return self.game_state == GameState.BINGO
 
-    def start_game(self) -> None:
-        self.board = generate_board()
+    def _start_round(
+        self,
+        board: list[BingoSquareData],
+        mode: Literal["bingo", "hunt"],
+    ) -> None:
+        self.board = board
         self.winning_line = None
         self.game_state = GameState.PLAYING
         self.show_bingo_modal = False
-        self.game_mode = "bingo"
+        self.game_mode = mode
         self.hunt_complete = False
 
+    def start_game(self) -> None:
+        self._start_round(generate_board(), "bingo")
+
     def start_hunt(self) -> None:
-        self.board = generate_hunt_board()
-        self.winning_line = None
-        self.game_state = GameState.PLAYING
-        self.show_bingo_modal = False
-        self.game_mode = "hunt"
-        self.hunt_complete = False
+        self._start_round(generate_hunt_board(), "hunt")
 
     def handle_square_click(self, square_id: int) -> None:
         if self.game_state != GameState.PLAYING:
@@ -63,9 +65,9 @@ class GameSession:
                 self.show_bingo_modal = True
 
     def reset_game(self) -> None:
-        self.game_state = GameState.START
         self.board = []
         self.winning_line = None
+        self.game_state = GameState.START
         self.show_bingo_modal = False
         self.game_mode = "bingo"
         self.hunt_complete = False
