@@ -1,8 +1,10 @@
 from dataclasses import dataclass, field
+from typing import Literal
 
 from app.game_logic import (
     check_bingo,
     generate_board,
+    generate_hunt_board,
     get_winning_square_ids,
     toggle_square,
 )
@@ -17,6 +19,8 @@ class GameSession:
     board: list[BingoSquareData] = field(default_factory=list)
     winning_line: BingoLine | None = None
     show_bingo_modal: bool = False
+    game_mode: Literal["bingo", "hunt"] = "bingo"
+    hunt_complete: bool = False
 
     @property
     def winning_square_ids(self) -> set[int]:
@@ -31,11 +35,25 @@ class GameSession:
         self.winning_line = None
         self.game_state = GameState.PLAYING
         self.show_bingo_modal = False
+        self.game_mode = "bingo"
+        self.hunt_complete = False
+
+    def start_hunt(self) -> None:
+        self.board = generate_hunt_board()
+        self.winning_line = None
+        self.game_state = GameState.PLAYING
+        self.show_bingo_modal = False
+        self.game_mode = "hunt"
+        self.hunt_complete = False
 
     def handle_square_click(self, square_id: int) -> None:
         if self.game_state != GameState.PLAYING:
             return
         self.board = toggle_square(self.board, square_id)
+
+        if self.game_mode == "hunt":
+            self.hunt_complete = all(square.is_marked for square in self.board)
+            return
 
         if self.winning_line is None:
             bingo = check_bingo(self.board)
@@ -49,6 +67,8 @@ class GameSession:
         self.board = []
         self.winning_line = None
         self.show_bingo_modal = False
+        self.game_mode = "bingo"
+        self.hunt_complete = False
 
     def dismiss_modal(self) -> None:
         self.show_bingo_modal = False

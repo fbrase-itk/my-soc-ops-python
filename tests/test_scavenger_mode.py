@@ -58,7 +58,8 @@ class TestScavengerProgress:
         start = client.post("/start-hunt")
         assert start.status_code == 200
 
-        # The hunt should expose checkbox toggles; marking all should show a completion message.
+        # The hunt should expose checkbox toggles.
+        # Marking all should show a completion message.
         for square_id in range(24):
             client.post(f"/toggle/{square_id}")
 

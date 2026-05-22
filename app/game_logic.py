@@ -19,6 +19,15 @@ def generate_board() -> list[BingoSquareData]:
     ]
 
 
+def generate_hunt_board() -> list[BingoSquareData]:
+    """Generate a scavenger checklist board with 25 non-free items."""
+    items = list(QUESTIONS)
+    target_size = BOARD_SIZE * BOARD_SIZE
+    while len(items) < target_size:
+        items.extend(QUESTIONS)
+    return [BingoSquareData(id=i, text=items[i]) for i in range(target_size)]
+
+
 def toggle_square(
     board: list[BingoSquareData], square_id: int
 ) -> list[BingoSquareData]:

@@ -1,0 +1,16 @@
+<ul class="hunt-list" aria-label="Scavenger checklist">
+    {% for square in session.board %}
+    <li class="hunt-item">
+        <button
+            hx-post="/toggle/{{ square.id }}"
+            hx-target="#game-container"
+            hx-swap="outerHTML"
+            class="board-cell {{ 'state-marked' if square.is_marked else 'state-idle' }}"
+            aria-pressed="{{ 'true' if square.is_marked else 'false' }}"
+            aria-label="{{ square.text }}">
+            <input type="checkbox" {% if square.is_marked %}checked{% endif %} tabindex="-1" aria-hidden="true">
+            <span class="cell-text">{{ square.text }}</span>
+        </button>
+    </li>
+    {% endfor %}
+</ul>

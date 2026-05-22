@@ -13,31 +13,47 @@
         </button>
 
         <div class="game-brand">
+            {% if session.game_mode == "hunt" %}
+            <p class="game-brand-kicker">Scavenger Hunt</p>
+            {% else %}
             <p class="game-brand-kicker">Live Board</p>
+            {% endif %}
             <h1>Soc Ops</h1>
         </div>
 
         <div class="game-progress" aria-label="Board progress">
             <span>{{ marked_count }} / {{ total_squares }}</span>
-            <small>Marked</small>
+            <small>{% if session.game_mode == "hunt" %}Progress{% else %}Marked{% endif %}</small>
         </div>
     </header>
 
     <section class="game-subheader" aria-label="Gameplay instructions">
+        {% if session.game_mode == "hunt" %}
+        <p>Use the checklist and mark each confirmed match to complete the Scavenger Hunt.</p>
+        {% else %}
         <p>Tap a square when you confirm a match. First complete line wins.</p>
+        {% endif %}
     </section>
 
-    {% if session.has_bingo %}
+    {% if session.game_mode == "hunt" and session.hunt_complete %}
+    <section class="status-banner" role="status" aria-live="assertive">
+        Scavenger Hunt complete.
+    </section>
+    {% elif session.has_bingo %}
     <section class="status-banner" role="status" aria-live="assertive">
         Bingo line completed. Keep going or reset for a new round.
     </section>
     {% endif %}
 
     <section class="board-stage" aria-label="Bingo board">
+        {% if session.game_mode == "hunt" %}
+        {% include "components/hunt_checklist.html" %}
+        {% else %}
         {% include "components/bingo_board.html" %}
+        {% endif %}
     </section>
 </div>
 
-{% if session.show_bingo_modal %}
+{% if session.show_bingo_modal and session.game_mode != "hunt" %}
     {% include "components/bingo_modal.html" %}
 {% endif %}

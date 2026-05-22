@@ -47,6 +47,15 @@
             Start Game
         </button>
 
+        <button
+            hx-post="/start-hunt"
+            hx-target="#game-container"
+            hx-swap="outerHTML"
+            class="btn btn-ghost btn-lg"
+            aria-label="Start scavenger hunt mode">
+            Scavenger Hunt
+        </button>
+
         <div class="start-rules" id="how-to-play" aria-labelledby="how-to-play-title">
             <h2 id="how-to-play-title">How to play</h2>
             <ol>
