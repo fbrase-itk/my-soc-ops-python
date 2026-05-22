@@ -87,7 +87,10 @@ cd my-soc-ops-python
 uv sync
 
 # Start the dev server
-uv run soc-ops
+uv run python -m app.main
+
+# Or run uvicorn directly
+uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 Open **http://localhost:8000** — your bingo card is ready. 🎲
