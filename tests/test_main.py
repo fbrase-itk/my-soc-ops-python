@@ -1,5 +1,6 @@
 import runpy
 import sys
+from pathlib import Path
 from types import SimpleNamespace
 
 
@@ -29,9 +30,8 @@ def test_module_execution_starts_uvicorn(monkeypatch):
         calls["kwargs"] = kwargs
 
     monkeypatch.setitem(sys.modules, "uvicorn", SimpleNamespace(run=fake_run))
-    sys.modules.pop("app.main", None)
-
-    runpy.run_module("app.main", run_name="__main__")
+    main_path = Path(__file__).resolve().parents[1] / "app" / "main.py"
+    runpy.run_path(str(main_path), run_name="__main__")
 
     assert calls["count"] == 1
     assert calls["args"] == ("app.main:app",)
