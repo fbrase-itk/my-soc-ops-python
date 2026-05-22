@@ -75,13 +75,25 @@ body {
 }
 
 .start-card {
-    width: min(100%, 36rem);
+    width: min(100%, 58rem);
     background: var(--bg-1);
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    padding: 2rem;
+    padding: 1.25rem;
     animation: enter-up 280ms ease-out;
+    display: grid;
+    gap: 1rem;
+}
+
+.start-hero {
+    display: grid;
+    gap: 1rem;
+}
+
+.start-hero-copy {
+    display: grid;
+    gap: 0.5rem;
 }
 
 .start-kicker,
@@ -102,14 +114,64 @@ body {
 }
 
 .start-subtitle {
-    margin: 0.75rem 0 0;
+    margin: 0.55rem 0 0;
     color: var(--text-1);
     font-size: 1rem;
     line-height: 1.5;
 }
 
+.start-preview {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+    border-radius: var(--radius-md);
+    padding: 0.7rem;
+    animation: pop-in 320ms ease-out 120ms both;
+}
+
+.start-preview-label {
+    margin: 0 0 0.5rem;
+    color: var(--text-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.start-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.22rem;
+}
+
+.start-preview-cell {
+    min-height: 2.85rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg-1);
+    color: var(--text-1);
+    font-size: 0.625rem;
+    line-height: 1.2;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    padding: 0.15rem;
+}
+
+.start-preview-cell-marked {
+    background: var(--success-bg);
+    border-color: var(--success-line);
+    color: var(--success);
+}
+
+.start-preview-cell-free {
+    background: var(--accent-soft);
+    border-style: dashed;
+    border-color: var(--accent);
+    color: var(--accent-strong);
+    font-weight: 700;
+}
+
 .start-rules {
-    margin-top: 1.5rem;
     border: 1px solid var(--line);
     background: var(--bg-0);
     border-radius: var(--radius-md);
@@ -121,12 +183,55 @@ body {
     font-size: 1rem;
 }
 
-.start-rules ul {
+.start-rules ol {
     margin: 0;
-    padding-left: 1rem;
+    padding-left: 1.15rem;
     color: var(--text-1);
     display: grid;
     gap: 0.5rem;
+}
+
+.start-features {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.start-feature-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--bg-1);
+    padding: 0.85rem;
+}
+
+.start-feature-card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.start-feature-card p {
+    margin: 0.45rem 0 0;
+    color: var(--text-1);
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+.start-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    font-size: 0.82rem;
+    color: var(--text-2);
+}
+
+.start-footer a {
+    color: inherit;
+    text-decoration-color: var(--line);
+    text-underline-offset: 0.16rem;
+}
+
+.start-footer a:hover {
+    color: var(--text-1);
 }
 
 .btn {
@@ -436,5 +541,20 @@ body {
         min-height: 56px;
         padding: 0.3rem;
         font-size: 0.68rem;
+    }
+}
+
+@media (min-width: 860px) {
+    .start-card {
+        padding: 1.5rem;
+    }
+
+    .start-hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 20.5rem);
+        align-items: start;
+    }
+
+    .start-features {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }

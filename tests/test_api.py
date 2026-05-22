@@ -20,6 +20,13 @@ class TestHomePage:
         assert "Start Game" in response.text
         assert "How to play" in response.text
 
+    def test_home_preserves_start_htmx_contract(self, client: TestClient):
+        response = client.get("/")
+        assert 'id="game-container"' in response.text
+        assert 'hx-post="/start"' in response.text
+        assert 'hx-target="#game-container"' in response.text
+        assert 'hx-swap="outerHTML"' in response.text
+
     def test_home_sets_session_cookie(self, client: TestClient):
         response = client.get("/")
         assert "session" in response.cookies

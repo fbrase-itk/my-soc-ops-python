@@ -1,16 +1,41 @@
 <div id="game-container" class="start-shell" role="main" aria-live="polite">
     <section class="start-card" aria-labelledby="start-title">
-        <p class="start-kicker">Networking Icebreaker</p>
-        <h1 id="start-title" class="start-title">Soc Ops</h1>
-        <p class="start-subtitle">Professional social bingo for conferences, workshops, and team mixers.</p>
-
-        <div class="start-rules" aria-label="How to play">
-            <h2>How it works</h2>
-            <ul>
-                <li>Find people who match each square.</li>
-                <li>Mark squares as you confirm matches.</li>
-                <li>Complete any row, column, or diagonal to win.</li>
-            </ul>
+        <div class="start-hero">
+            <div class="start-hero-copy">
+                <p class="start-kicker">Networking Icebreaker</p>
+                <h1 id="start-title" class="start-title">Soc Ops</h1>
+                <p class="start-subtitle">Turn introductions into a quick, structured social bingo challenge your group can start in seconds.</p>
+            </div>
+            <div class="start-preview" aria-hidden="true">
+                <p class="start-preview-label">Board preview</p>
+                <div class="start-preview-grid">
+                    <span class="start-preview-cell">Find a host city local</span>
+                    <span class="start-preview-cell">Met someone from another team</span>
+                    <span class="start-preview-cell start-preview-cell-marked">Works remotely</span>
+                    <span class="start-preview-cell">First-time attendee</span>
+                    <span class="start-preview-cell">Visited 3+ countries</span>
+                    <span class="start-preview-cell">Knows a keynote speaker</span>
+                    <span class="start-preview-cell">Uses Python daily</span>
+                    <span class="start-preview-cell">Joined this year</span>
+                    <span class="start-preview-cell">Leads standups</span>
+                    <span class="start-preview-cell">Mentors juniors</span>
+                    <span class="start-preview-cell">Has a side project</span>
+                    <span class="start-preview-cell">Works in product</span>
+                    <span class="start-preview-cell start-preview-cell-free">FREE</span>
+                    <span class="start-preview-cell">Runs workshops</span>
+                    <span class="start-preview-cell">Enjoys pair programming</span>
+                    <span class="start-preview-cell">Attended last year</span>
+                    <span class="start-preview-cell">Has spoken at an event</span>
+                    <span class="start-preview-cell">Lives in another timezone</span>
+                    <span class="start-preview-cell">Uses HTMX</span>
+                    <span class="start-preview-cell">Works cross-functionally</span>
+                    <span class="start-preview-cell">Prefers tea over coffee</span>
+                    <span class="start-preview-cell">Is new to this topic</span>
+                    <span class="start-preview-cell">Coaches teammates</span>
+                    <span class="start-preview-cell">Works hybrid</span>
+                    <span class="start-preview-cell">Loves retros</span>
+                </div>
+            </div>
         </div>
 
         <button
@@ -21,5 +46,34 @@
             aria-label="Start game session">
             Start Game
         </button>
+
+        <div class="start-rules" id="how-to-play" aria-labelledby="how-to-play-title">
+            <h2 id="how-to-play-title">How to play</h2>
+            <ol>
+                <li>Start the board and scan the prompts for quick conversation starters.</li>
+                <li>Meet people who match each prompt and mark the confirmed squares.</li>
+                <li>Complete a row, column, or diagonal to trigger bingo.</li>
+            </ol>
+        </div>
+
+        <div class="start-features" aria-label="Product highlights">
+            <article class="start-feature-card">
+                <h3>Instant context</h3>
+                <p>The preview shows the experience upfront so players understand the flow before they start.</p>
+            </article>
+            <article class="start-feature-card">
+                <h3>Fast rounds</h3>
+                <p>Built for short conference slots, team events, and workshop breaks.</p>
+            </article>
+            <article class="start-feature-card">
+                <h3>Inclusive prompts</h3>
+                <p>Designed to encourage safe introductions across roles, backgrounds, and experience levels.</p>
+            </article>
+        </div>
+
+        <footer class="start-footer" aria-label="Start screen links">
+            <a href="#how-to-play">How to play</a>
+            <a href="https://github.com/fbrase-itk/my-soc-ops-python" target="_blank" rel="noopener noreferrer" aria-label="Project (opens in new window)">Project</a>
+        </footer>
     </section>
 </div>
